@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { EmailInput } from "@/components/EmailInput";
 import {StickyScrollRevealDemo} from "@/components/StickyScroll";
+import { CompanyLogos } from "@/components/CompanyLogos";
 
 export default function Home() {
   return (
@@ -39,27 +40,7 @@ export default function Home() {
       </div>
     </section>
 
-    {/* STICKY SCROLL FULL-WIDTH SECTION */}
-    <section className="w-screen mt-16">
-      <StickyScrollRevealDemo />
-    </section>
-
-      {/* Explainer Section */}
-      <section className="flex flex-col md:flex-row gap-8 w-full max-w-4xl justify-center">
-        <Card className="flex-1">
-          <CardContent className="p-6">
-            <h2 className="text-xl font-bold mb-2 text-foreground">For Candidates</h2>
-            <p className="text-muted-foreground">Get noticed by top employers, save time on applications, and let AI match you to your perfect job.</p>
-          </CardContent>
-        </Card>
-        <Card className="flex-1">
-          <CardContent className="p-6">
-            <h2 className="text-xl font-bold mb-2 text-foreground">For Recruiters</h2>
-            <p className="text-muted-foreground">Find the best fit, automate screening, and streamline your hiring process with explainable AI insights.</p>
-          </CardContent>
-        </Card>
-      </section>
-      {/* Demo Visuals Placeholder */}
+    {/* Demo Visuals Placeholder */}
       <section className="w-full flex flex-col items-center mt-8">
         <Card className="w-full max-w-3xl">
           <CardContent className="h-64 flex items-center justify-center text-muted-foreground text-lg">
@@ -67,6 +48,16 @@ export default function Home() {
           </CardContent>
         </Card>
       </section>
+
+    {/* STICKY SCROLL FULL-WIDTH SECTION */}
+    <section className="w-screen mt-16">
+      <StickyScrollRevealDemo />
+    </section>
+
+    {/* Company Logos Section */}
+    <CompanyLogos />
+
+      
     </main>
   );
 }
