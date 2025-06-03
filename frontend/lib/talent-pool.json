@@ -1,0 +1,342 @@
+[
+  {
+    "name": "John W. Smith",
+    "email": "jwsmith@colostate.edu",
+    "location": "Fort Collins, CO",
+    "phone": "",
+    "linkedin": "",
+    "role_applied": "Counseling Supervisor, Client Specialist, or Teacher's Assistant",
+    "summary": "Four years experience in early childhood development with a diverse background in the care of special needs children and adults.",
+    "education": [
+      {
+        "institution": "University of Arkansas at Little Rock",
+        "degree": "BS",
+        "field": "Early Childhood Development",
+        "end_year": "1999",
+        "cgpa": "3.8",
+        "honors": [
+          "Dean's List",
+          "Chancellor's List"
+        ]
+      },
+      {
+        "institution": "University of Arkansas at Little Rock",
+        "degree": "BA",
+        "field": "Elementary Education",
+        "end_year": "1998",
+        "cgpa": "3.5"
+      }
+    ],
+    "skills": {
+      "languages": [],
+      "frameworks_libraries": [],
+      "tools_platforms": [],
+      "APIs": [],
+      "soft_skills": [
+        "Client databases",
+        "Client contact",
+        "Service assignment coordination",
+        "Activity planning",
+        "Classroom management"
+      ]
+    },
+    "certifications": [],
+    "projects": [],
+    "experience": [
+      {
+        "company": "The Wesley Center",
+        "title": "Counseling Supervisor",
+        "start_date": "1999",
+        "end_date": "2002",
+        "duration": "3 years",
+        "description": "",
+        "technologies": []
+      },
+      {
+        "company": "Rainbow Special Care Center",
+        "title": "Client Specialist",
+        "start_date": "1997",
+        "end_date": "1999",
+        "duration": "2 years",
+        "description": "",
+        "technologies": []
+      },
+      {
+        "company": "Cowell Elementary",
+        "title": "Teacher's Assistant",
+        "start_date": "1996",
+        "end_date": "1997",
+        "duration": "1 year",
+        "description": "",
+        "technologies": []
+      }
+    ],
+    "leadership": [],
+    "awards": [],
+    "keywords": [
+      "early childhood development",
+      "special needs",
+      "adult care",
+      "childcare",
+      "counseling",
+      "teaching"
+    ],
+    "languages": [],
+    "personality": {
+      "type1": "ISFJ"
+    },
+    "analysis": "Based on the resume, John W. Smith may align with an ISFJ personality type. The attention to detail, focus on past experiences, providing assistance, and adhering to established procedures aligns with key ISFJ characteristics. Further assessment might be required to confirm this.",
+    "pdfUrl": "/resumes/5c399461-dbfa-4b5c-ab36-26c4efdad124.pdf",
+    "meeting_id": "4ca3297a-1339-4384-b5b3-72c664896a54",
+    "status": "taking interview",
+    "id": "candidate-0-bc55abfe-0bda-4603-94e8-e9fdcdacbbca"
+  },
+  {
+    "name": "Sayyid Syamil Syed Mohamed",
+    "email": "sayyidsyamils@gmail.com",
+    "location": "Kuala Lumpur, Malaysia",
+    "phone": "",
+    "linkedin": "linkedin.com/in/sayyidsyamil",
+    "role_applied": "Internship",
+    "summary": "Highly motivated and skilled Computer Science student with a strong foundation in Artificial Intelligence, machine learning, and software development. Proven ability to lead teams, develop innovative solutions, and deliver impactful results. Seeking an internship to apply technical expertise and contribute to challenging projects.",
+    "education": [
+      {
+        "institution": "UNIVERSITY MALAYA",
+        "degree": "BCS Computer Science (Artificial Intelligence)",
+        "field": "Computer Science",
+        "start_year": "",
+        "end_year": "2027",
+        "cgpa": "3.95/4.0",
+        "honors": [
+          "Yayasan Khazanah Watan Scholar"
+        ],
+        "qualification": "",
+        "grades": ""
+      },
+      {
+        "institution": "UNIVERSITY MALAYA",
+        "degree": "Foundation in Physical Science",
+        "field": "Science",
+        "start_year": "",
+        "end_year": "2023",
+        "cgpa": "4.0/4.0",
+        "honors": [],
+        "qualification": "",
+        "grades": ""
+      },
+      {
+        "institution": "SMK SERI HARTAMAS",
+        "degree": "Sijil Pelajaran Malaysia (SPM)",
+        "field": "",
+        "start_year": "",
+        "end_year": "2021",
+        "cgpa": "",
+        "honors": [],
+        "qualification": "SPM",
+        "grades": "9A's"
+      }
+    ],
+    "skills": {
+      "languages": [
+        "Python",
+        "JavaScript",
+        "C",
+        "C++",
+        "SQL",
+        "R"
+      ],
+      "frameworks_libraries": [
+        "TensorFlow",
+        "PyTorch",
+        "Scikit-Learn",
+        "Pandas",
+        "NumPy",
+        "LangChain"
+      ],
+      "tools_platforms": [
+        "Google Colab",
+        "Vercel",
+        "GCP",
+        "Firebase",
+        "Supabase",
+        "MongoDB",
+        "Tailwind CSS"
+      ],
+      "APIs": [
+        "OpenAI API",
+        "Hugging Face",
+        "Transformers",
+        "Gemini 2.5 API",
+        "MCP"
+      ],
+      "soft_skills": []
+    },
+    "certifications": [
+      {
+        "title": "Machine Learning Specialization",
+        "issuer": "Stanford",
+        "year": ""
+      },
+      {
+        "title": "CS50",
+        "issuer": "Harvard",
+        "year": ""
+      },
+      {
+        "title": "Cisco CCNA",
+        "issuer": "Cisco",
+        "year": ""
+      }
+    ],
+    "projects": [
+      {
+        "title": "HEAL.ai",
+        "description": "Revolutionized patient interaction with an AI-powered multilingual chatbot. Triage, registration, queue management, and visit summarization using real-time, automated assistance. Integrated Gemini 2.5 API and MCP function-calling for medical consultations. Built with Next.js + TypeScript, deployed on Vercel, leveraging custom SQLite for the Malaysian public healthcare system.",
+        "technologies": [
+          "Next.js",
+          "TypeScript",
+          "Vercel",
+          "SQLite",
+          "Gemini 2.5 API",
+          "MCP"
+        ],
+        "year": "",
+        "role": "",
+        "impact": "",
+        "awards": []
+      },
+      {
+        "title": "SecondMind",
+        "description": "Created an AI-powered productivity tool to automate drafting, summarization, and research tasks. Won Gold and Most Innovative Award at a national innovation competition. Integrated multiple large language models (LLMs) for seamless, high-volume automation. Built with Python, optimized for multi-API integration and user-friendliness.",
+        "technologies": [
+          "Python",
+          "LLMs"
+        ],
+        "year": "",
+        "role": "",
+        "impact": "",
+        "awards": [
+          "Gold",
+          "Most Innovative Award"
+        ]
+      },
+      {
+        "title": "Bijak ASB",
+        "description": "Smart Financial Insights at Your Fingertips Developed a real-time tool comparing ASB vs. ASBF returns, offering instant financial insights. Built with Next.js, React, and Tailwind CSS, focusing on a backend-free and interactive experience.",
+        "technologies": [
+          "Next.js",
+          "React",
+          "Tailwind CSS"
+        ],
+        "year": "",
+        "role": "",
+        "impact": "",
+        "awards": []
+      },
+      {
+        "title": "Cinemood",
+        "description": "Al-Powered Movie Emotion Analyzer Engineered an emotion-driven movie analysis tool that processes plot arcs using NLP and machine learning. Fetches movie plots directly from Wikipedia by title. Breaks down plots into scenes and identifies dominant emotions. Visualizes emotional arcs and provides downloadable reports in PDF formats. Built with Transformers, SpaCy, and NLTK for NLP; integrated with Gradio for web interface.",
+        "technologies": [
+          "Transformers",
+          "SpaCy",
+          "NLTK",
+          "Gradio"
+        ],
+        "year": "",
+        "role": "",
+        "impact": "",
+        "awards": []
+      },
+      {
+        "title": "E-Gringotts",
+        "description": "Wizarding World-Inspired Banking System Developed a full-stack banking app themed around Harry Potter's Gringotts Bank. Features magical currency management (Galleons, Sickles, Knuts), tiered user roles, and secure transactions. Applied data structures like trees, graphs, stacks, and hash tables. Built with Next.js, React, Tailwind CSS (frontend), and Java Spring Boot (backend).",
+        "technologies": [
+          "Next.js",
+          "React",
+          "Tailwind CSS",
+          "Java Spring Boot"
+        ],
+        "year": "",
+        "role": "",
+        "impact": "",
+        "awards": []
+      },
+      {
+        "title": "Predictive Analysis of Malaysian Election Outcomes",
+        "description": "Built for university Machine Learning course Cleaned and preprocessed GE12–GE15 election data (feature selection, encoding, scaling) Trained multiple models (Logistic Regression, Random Forest, Gradient Boosting, Support Vector Machine, Neural Networks) with GridSearchCV tuning Evaluated models using Accuracy, Precision, Recall, and F1 Score Deployed best model with an interactive widget for real-time win/loss prediction",
+        "technologies": [
+          "Logistic Regression",
+          "Random Forest",
+          "Gradient Boosting",
+          "Support Vector Machine",
+          "Neural Networks"
+        ],
+        "year": "",
+        "role": "",
+        "impact": "",
+        "awards": []
+      }
+    ],
+    "experience": [],
+    "leadership": [
+      {
+        "role": "Generative AI Lead",
+        "organization": "Google Developer Group on Campus, University Malaya",
+        "year": "2025",
+        "start_year": "",
+        "description": "Led the Generative AI team, organizing 6 workshops: Generative AI for Everyone, Monthly AI News, Practical Sharing on Open-Source Deep Research, Imagen3 (Image Generation Tools), Hugging Face x LangChain, and Vibe Coding Workshop & Competition. Led event planning and spoke at workshops."
+      },
+      {
+        "role": "Vice Director, Dean's Cup",
+        "organization": "Persatuan Komputer Universiti Malaya (PEKOM)",
+        "year": "2025",
+        "start_year": "",
+        "description": "Co-led the faculty's largest sports event with 948 participants and developed its first website."
+      },
+      {
+        "role": "Head of Technical",
+        "organization": "Programming League National",
+        "year": "2024",
+        "start_year": "",
+        "description": "Led the technical team and built the event website within two days under tight deadlines."
+      },
+      {
+        "role": "Student Facilitator & Jawatankuasa Tindakan Kolej",
+        "organization": "Kinabalu Residential College (KK8)",
+        "year": "2025",
+        "start_year": "",
+        "description": "Volunteered as a student facilitator for 700+ new students then was appointed as JTKD Domestic & Property lead to improve room bookings and inventory management at KK8."
+      },
+      {
+        "role": "Vice Director, Kina Cast & Kina Tech",
+        "organization": "Kinabalu Residential College (KK8)",
+        "year": "2025",
+        "start_year": "",
+        "description": "Launched KK8's first YouTube podcast and trained 20 students in event technical operations."
+      }
+    ],
+    "awards": [],
+    "keywords": [
+      "Artificial Intelligence",
+      "Machine Learning",
+      "Deep Learning",
+      "Software Development",
+      "Leadership",
+      "Teamwork",
+      "Problem-solving",
+      "Innovation"
+    ],
+    "languages": [
+      "English",
+      "Malay"
+    ],
+    "personality": {
+      "type1": "INTJ"
+    },
+    "analysis": "Based on the resume, Sayyid demonstrates traits associated with an INTJ (Architect) personality type. Evident through:\n\n*   **Strategic Thinking:** The proactive approach to projects, such as Heal.ai and SecondMind, demonstrates strategic thinking and a focus on innovation.\n*   **Problem-Solving:** The ability to engineer solutions, seen in projects like Cinemood and E-Gringotts, suggests strong problem-solving skills and a detail-oriented approach.\n*   **Leadership:** Taking initiative and leading technical teams, as highlighted in the leadership experiences, aligns with the INTJ's natural leadership tendencies.\n*   **Focus on Efficiency:** Building websites under tight deadlines and optimizing projects for user-friendliness reflects a focus on efficiency and practicality.\n\n\nOverall, the resume portrays a candidate with a strong analytical mind, a drive for innovation, and a strategic approach to problem-solving, all indicative of an INTJ personality.",
+    "pdfUrl": "/resumes/4b220a26-bd39-4c7a-979a-89042b7d8ae6.pdf",
+    "meeting_id": "0d0d8c7f-7c1d-4b07-91ee-4079f8af814a",
+    "status": "interview sent",
+    "id": "98068e94-d355-4178-8958-115a83c33af9"
+  }
+]
