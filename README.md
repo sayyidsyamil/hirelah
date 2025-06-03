@@ -4,112 +4,313 @@
 
 ## Team Members: (Please fill in names)
 
-## 1. Introduction: The Hackathon Winning Vision - Hirela AI
+## 1. Introduction: Hirelah AI System Overview
 
-Hirela AI is not just another recruitment platform; it's a **revolutionary AI-powered talent acquisition system** specifically engineered for the dynamic and rapidly evolving job markets of Southeast Asia. Our core intuition stems from the critical need to transform traditional, often biased, and inefficient hiring processes into a **faster, fairer, and more efficient experience** for both candidates and recruiters.
+Hirelah AI is a modern talent acquisition platform that implements AI-driven recruitment workflows using Google Gemini and Next.js. The name "Hire-lah" reflects its Southeast Asian focus, with "lah" being a common colloquialism in Malaysian and Singaporean English.
 
-This project was conceived as a **hackathon winning idea** by focusing on key innovations:
-*   **Explainable AI (XAI)**: Moving beyond black-box algorithms, Hirela AI provides transparency in its matching decisions, fostering trust and reducing bias. This is a critical differentiator in a market where AI adoption in HR is growing but often met with skepticism.
-*   **End-to-End Automation**: From intelligent resume parsing and semantic candidate search to sophisticated virtual interviews and real-time recruiter-candidate chatbots, we automate the entire hiring lifecycle.
-*   **Regional Focus**: Tailoring the solution to the unique cultural nuances and market demands of Southeast Asia ensures higher relevance and adoption.
+The system architecture is built around three key user journeys:
 
-Our platform leverages cutting-edge technologies, prominently integrating **Google Gemini for advanced AI analysis**, alongside modern web frameworks like Next.js. This robust foundation allows us to deliver a seamless, intelligent, and highly impactful solution that stands out in the competitive HR tech landscape.
+1. **Candidates** upload resumes that are analyzed by Gemini AI
+2. **Recruiters** use semantic search to find relevant candidates 
+3. **Interview process** is automated through an AI interviewer
 
-## 2. Problem Statement: Addressing the Core Flaws of Traditional Recruitment
+Core technical components:
+- **Frontend**: Next.js app with React and Tailwind CSS
+- **AI Integration**: Google Gemini 2.0 Flash for resume analysis and chatbot
+- **Backend**: FastAPI service for semantic matching using SentenceTransformer
+- **Data Storage**: JSON-based storage in the filesystem for the prototype
 
-The traditional recruitment landscape, particularly in the high-growth markets of Southeast Asia, is plagued by significant inefficiencies and inherent biases. This creates a lose-lose scenario:
+## 2. System Architecture & Implementation Details
 
-*   **For Recruiters**: They are overwhelmed by an ever-increasing volume of applications, spending excessive time on manual resume screening, which is prone to human error and unconscious bias. This leads to prolonged hiring cycles, high costs, and a struggle to identify the truly best-fit candidates amidst the noise. Existing generic AI solutions often lack the transparency needed for critical hiring decisions, making them difficult to trust and integrate effectively.
-*   **For Candidates**: They face impersonal, generic application processes, often feeling like their unique skills and experiences are overlooked. The lack of feedback and transparency in rejection processes is demotivating, leading to a poor candidate experience and missed opportunities for deserving talent.
+### 2.1 Resume Processing and AI Analysis
 
-**Our intuition for a winning solution** directly addresses these pain points. While 67% of recruiters acknowledge AI's time-saving potential (LinkedIn), the critical gap lies in **transparency, contextual understanding, and bias reduction**. Current solutions often operate as black boxes, failing to provide the "why" behind their decisions. Hirela AI aims to fill this void by offering an explainable, culturally aware, and comprehensive AI-driven platform that not only saves time but also fosters fairness and improves the quality of hires.
+The core of the resume processing system is built around Google Gemini's AI capabilities:
 
-## 3. Aim and Objectives: Our Strategic Vision for a Winning Solution
 
-Our overarching **Aim** for Hirela AI, a key driver of its hackathon success, is to:
-*   **Build an explainable, AI-powered recruitment platform that fundamentally accelerates and improves talent matching for Southeast Asia.**
+The system:
+1. Accepts PDF uploads from candidates
+2. Uses Gemini 2.0 Flash to extract structured data
+3. Enhances the data with personality type predictions and skill categorization
+4. Stores the processed resume data in a JSON file for the talent pool
 
-This aim is underpinned by a set of highly focused and innovative **Objectives**, each designed to address critical market gaps and demonstrate the platform's transformative potential:
+### 2.2 Semantic Search Implementation
 
-### Objectives:
-*   **Automate Resume Parsing and Candidate Profiling using Advanced AI**: Our intuition here was to move beyond keyword matching. By leveraging sophisticated AI, we extract nuanced insights from resumes, creating rich candidate profiles that capture skills, experience, and potential, far beyond what traditional systems can achieve. This forms the bedrock for intelligent matching.
-*   **Enable Semantic Search and Filtering of Talent Pools for Recruiters**: Instead of rigid keyword searches, recruiters can use natural language queries to find candidates based on conceptual understanding. This objective was born from the frustration of recruiters missing out on ideal candidates due to inflexible search tools. Our semantic approach ensures higher relevance and efficiency.
-*   **Provide AI-Powered, Bias-Reduced Virtual Interviews**: This is a cornerstone of our explainable AI approach. The intuition was to create a structured, consistent, and objective interview environment that minimizes human biases, providing fair assessments and detailed, transparent feedback. This directly tackles the issue of unconscious bias in hiring.
-*   **Offer Live Chat and Q&A with AI for both Recruiters and Candidates**: Recognizing the need for immediate, personalized interaction, this objective aims to enhance engagement and provide instant support. For candidates, it means quick answers and guidance; for recruiters, it's an efficient way to clarify details and screen candidates without extensive manual effort.
-*   **Ensure Explainability and Transparency in all AI-Driven Decisions**: This objective is paramount to our "hackathon winner" ethos. We believe that for AI to be truly adopted in sensitive areas like HR, its decisions must be understandable. Our intuition was to build trust by showing *why* a candidate was matched or *how* an interview score was derived, empowering users with actionable insights rather than opaque results.
+The semantic matching capability is powered by a Python backend using SentenceTransformer:
 
-## 4. Methodology: Agile Development & Strategic Tech Choices (Hackathon Execution)
+```python
+# Backend semantic search service
+app = FastAPI()
+model = SentenceTransformer("nathankim/fine_tuned_resume_matcher")
 
-Our methodology was designed for rapid prototyping and effective demonstration, crucial for a hackathon environment. The intuition behind our approach was to quickly build a functional, impactful prototype that showcased the core innovations of Hirela AI.
+@app.post("/similarity")
+def get_similarity(data: TextPair):
+    emb = model.encode([data.resume, data.job], convert_to_tensor=True)
+    score = util.pytorch_cos_sim(emb[0], emb[1]).item()
+    return {"similarity_score": score}
+```
 
-### 4.1 Implementation & Iteration
+The search workflow:
+1. Recruiters enter natural language queries about skills or experience
+2. The system flattens resume data to plain text representation
+3. SentenceTransformer calculates semantic similarity scores
+4. Results are ranked and returned with match percentages
 
-*   **Prototype Development**: We focused on building the most impactful core flows first: candidate onboarding, recruiter search, and the AI interview. This allowed us to quickly demonstrate the end-to-end vision of Hirela AI. Our intuition was to prioritize features that directly addressed the problem statement and highlighted our unique selling points.
-*   **Implementation**: The integration of **Google Gemini for robust AI analysis** was central to our implementation, enabling advanced resume parsing, semantic search, and intelligent Q&A. We chose **Next.js** for its full-stack capabilities, allowing for rapid frontend and backend development, and **Clerk** for streamlined authentication, minimizing setup time and maximizing development velocity.
-*   **Testing & Refinement**: Continuous user testing with sample resumes and iterative UI/UX improvements were vital. This agile feedback loop, characteristic of a hackathon sprint, allowed us to quickly validate AI output and refine the user experience, ensuring the prototype was not only functional but also intuitive and effective.
+## 3. Key System Components and Workflow
 
-### 4.2 Tech Stack: Powering Innovation
+### 3.1 Resume Upload and AI Analysis Process
 
-The selection of our tech stack was strategic, balancing performance, scalability, and development speed—all critical considerations for a winning hackathon project.
+The resume upload and analysis process works through the following steps:
 
-*   **Frontend**: **Next.js (React)** and **Tailwind CSS** provided a powerful combination for building a responsive, modern, and highly performant user interface with rapid styling capabilities.
-*   **Backend**: **Next.js API routes** and **Node.js** offered a unified JavaScript environment, simplifying development and deployment.
-*   **Database**: A **JSON-based (for prototype)** approach allowed for quick data modeling and iteration, with clear pathways for extension to robust solutions like MongoDB or PostgreSQL for production.
-*   **AI/ML**: **Google Gemini API** was chosen for its cutting-edge capabilities in natural language processing, enabling the core AI features: intelligent resume parsing, semantic search, and dynamic interview Q&A. This was a deliberate choice to leverage state-of-the-art AI.
-*   **Authentication**: **Clerk** provided a secure, developer-friendly authentication solution, allowing us to focus on core product features rather than reinventing auth.
-*   **Deployment**: **Vercel** offered seamless deployment for Next.js applications, ensuring our prototype was easily accessible and showcase-ready.
+1. **File Upload**: The candidate uploads a PDF resume through the `/candidate/apply` page
+2. **PDF Processing**: The resume is processed using the Google Gemini API:
+   ```typescript
+   // Upload file to Gemini
+   const uploaded = await ai.files.upload({
+     file: blob,
+     config: { displayName: 'resume.pdf' },
+   });
+   
+   // Wait for processing
+   let getFile = await ai.files.get({ name: uploaded.name as string });
+   while (getFile.state === 'PROCESSING') {
+     await new Promise((resolve) => setTimeout(resolve, 2000));
+     getFile = await ai.files.get({ name: uploaded.name as string });
+   }
+   ```
 
-Our intuition was to select a tech stack that not only delivered on the project's ambitious AI goals but also facilitated rapid development and a polished presentation, essential for a hackathon victory.
+3. **Structured Data Extraction**: Gemini AI extracts structured data from the PDF into a detailed JSON schema
+4. **Storage**: The PDF is saved to `/public/resumes/{uuid}.pdf` and the parsed data is added to the talent pool JSON file
+5. **Candidate Record**: A unique ID is assigned to the candidate record for tracking
 
-## 5. Potential Impact: Why Hirela AI is a Game-Changer (Hackathon Winner's Edge)
+### 3.2 Recruiter Workflow and Semantic Search
 
-Our market analysis and strategic design were heavily influenced by the desire to create a solution with significant, demonstrable impact—a key factor in its recognition as a hackathon winner.
+The recruiter workflow is handled through the `/recruiter/talent-pool` interface:
 
-### 5.1 Market Research & Competitive Advantage
+1. **Talent Pool Display**: All candidates are loaded from `lib/talent-pool.json` 
+2. **Semantic Search**: When a recruiter enters a query:
+   ```typescript
+   // Debounced semantic search
+   useEffect(() => {
+     if (searchTimeout.current) clearTimeout(searchTimeout.current);
+     searchTimeout.current = setTimeout(async () => {
+       if (!search.trim()) {
+         setFiltered(allCandidates.map(c => ({ ...c, match: undefined })));
+         return;
+       }
 
-The Southeast Asian recruitment market is ripe for disruption. While established players like Seek, JobStreet, Glints, and LinkedIn Talent Solutions offer valuable services, they often fall short in critical areas that Hirela AI excels in:
+       try {
+         const res = await fetch("/api/semantic-search", {
+           method: "POST",
+           headers: { "Content-Type": "application/json" },
+           body: JSON.stringify({ query: currentQuery, candidates: allCandidates }),
+         });
+         const data = await res.json();
+         if (Array.isArray(data)) {
+           setFiltered(data);
+         }
+       } catch (error) {
+         // Fallback to local filter if API fails
+         // ...
+       }
+     }, 300);
+   }, [search, allCandidates]);
+   ```
 
-*   **Lack of Explainability**: Most existing AI matching tools are opaque, hindering trust and adoption. Our **Explainable AI (XAI)** is a direct response to this, providing clear justifications for matches and interview feedback, which is a significant competitive differentiator. Our intuition was that transparency builds confidence and accelerates decision-making.
-*   **Generic Solutions vs. Local Adaptation**: Many global platforms offer one-size-fits-all solutions. Hirela AI's focus on Southeast Asia allows for cultural nuances and specific market demands to be integrated, making it more relevant and effective for local businesses and candidates.
-*   **Limited End-to-End Automation**: While some platforms offer parts of the hiring process, few provide a truly integrated, AI-driven end-to-end solution from resume parsing to virtual interviews and real-time chat. Our comprehensive approach streamlines the entire workflow, offering unparalleled efficiency.
+3. **Text Processing**: 
+   - Resume data is flattened to plain text using the `flattenResumeToText` function
+   - The text is sent to a Python FastAPI backend for semantic similarity calculation
+   - Results are ranked by match percentage
 
-**Hirela AI's unique value proposition** lies in its combination of explainable AI, live chat capabilities, and virtual interviews, all meticulously tailored for the Southeast Asian context. This holistic and transparent approach positions us not just as a competitor, but as a leader in next-generation talent acquisition.
+### 3.3 AI Interview Implementation
 
-### 5.2 Target Users & Value Proposition
+The interview system connects candidates with an AI interviewer:
 
-Our target users are precisely those who stand to gain the most from our innovative approach:
+1. **Interview Generation**: The recruiter can generate a unique interview link
+2. **Interview URL**: The system creates a unique URL with a UUID token: `/interview/{token}`
+3. **Real-time Interview**: The interview page provides:
+   - Video/audio capture through the browser's MediaDevices API
+   - Camera and microphone toggle controls
+   - Text-based conversation interface for the interview questions and responses
 
-*   **Recruiters/HR Teams in Southeast Asia**: Seeking efficient, bias-reduced, and transparent hiring processes. Hirela AI offers them:
-    *   **Significant Time Savings**: Automating tedious tasks like resume screening and initial interviews.
-    *   **Improved Quality of Hire**: Through semantic matching and objective AI assessments.
-    *   **Reduced Bias**: Ensuring a fairer and more diverse talent pool.
-    *   **Actionable Insights**: With explainable AI, they understand *why* candidates are recommended.
-*   **Job Seekers in Southeast Asia**: Wanting personalized, fairer job matching and constructive feedback. Hirela AI provides them with:
-    *   **Personalized Matches**: Connecting them with jobs that truly align with their skills and aspirations.
-    *   **Fairer Evaluation**: Through bias-reduced AI interviews.
-    *   **Enhanced Engagement**: Via real-time AI chatbots for queries and support.
-    *   **Transparency**: Understanding feedback and matching criteria.
+## 4. Technical Implementation Details
 
-Our intuition was that by solving these core problems for both sides of the hiring equation, we could create a platform that not only wins hackathons but also drives real-world impact and becomes indispensable for talent acquisition in the region.
+### 4.1 Frontend Architecture
 
-## 6. Prototype Interface (Appendix): Demonstrating the Winning Concept
+The frontend is built with Next.js and organized as follows:
 
-During the hackathon, our prototype interface was crucial for visually demonstrating the innovative flows and user experience of Hirela AI. The intuition was to create clear, intuitive pathways that showcased the platform's core functionalities and its immediate value proposition.
+1. **Landing Page** (`/app/page.tsx`): Entry point with paths for candidates and recruiters
+2. **Candidate Flow**:
+   - Resume upload page (`/app/candidate/apply/page.tsx`)
+   - Form submission with PDF upload
+   
+3. **Recruiter Flow**:
+   - Talent pool management (`/app/recruiter/talent-pool/page.tsx`)
+   - Candidate filtering and search interface
+   - AI chat interface for asking questions about candidates
+   - Interview invitation generation
 
-*   **Candidate Flow**: Sign up → Upload Resume → AI parsing → Job matching. This flow highlights the ease of candidate onboarding and the power of AI in personalized job recommendations.
-*   **Recruiter Flow**: Login → Search/Semantic filter talent pool → Preview candidate → AI Q&A → Invite for interview. This demonstrates how recruiters can efficiently navigate and leverage the AI-powered talent pool.
-*   **Virtual Interview**: Live video/audio with AI interviewer, real-time transcript, and feedback. This showcases our commitment to bias reduction and transparent candidate assessment.
-*   (See [`/public`](public/) for sample resumes and SVG assets. UI wireframes can be provided via Figma or screenshots.)
+4. **Interview System**:
+   - Real-time interview page (`/app/interview/[token]/page.tsx`)
+   - Camera and microphone controls
+   - AI conversation interface
 
-## 7. References: Foundations of Our Innovation
+### 4.2 Backend Services
 
-Our project is built upon insights from industry trends and robust technological documentation. These references underpinned our strategic decisions and technical implementations, contributing to the depth and credibility of our hackathon submission.
+The backend functionality is primarily implemented through API routes:
 
-*   [LinkedIn Talent Trends 2024](https://www.linkedin.com/business/talent/blog/talent-trends)
-*   [Google Gemini API Documentation](https://ai.google.dev/gemini/docs)
-*   [Next.js Documentation](https://nextjs.org/docs)
-*   [Add any academic papers, market reports, or additional sources used]
+1. **AI Analysis** (`/app/api/ai-analysis/route.ts`):
+   - Handles PDF resume uploads
+   - Processes documents with Google Gemini API
+   - Extracts structured data using a predefined schema
+
+2. **Semantic Search** (`/app/api/semantic-search/route.ts`):
+   - Connects to a FastAPI Python backend
+   - Flattens resume data into plain text
+   - Calculates semantic similarity scores
+
+3. **Candidate Chat** (`/app/api/candidate-chat/route.ts`):
+   - Allows recruiters to ask questions about specific candidates
+   - Uses AI to analyze resumes and provide relevant answers
+
+4. **Interview Management** (`/app/api/interview/[token]/route.ts`):
+   - Creates and retrieves interview sessions
+   - Manages interview tokens and candidate assignments
+
+### 4.3 Data Storage & Processing
+
+The system uses a simple but effective data storage approach:
+
+1. **Resume Storage**:
+   - PDF files stored in `/public/resumes/` with UUID filenames
+   - Accessible through direct URL paths
+
+2. **Candidate Data**:
+   - Structured JSON stored in `/lib/talent-pool.json`
+   - Each candidate has a unique ID, resume data, and interview status
+
+3. **Semantic Matching Backend**:
+   - Python FastAPI service using SentenceTransformer
+   - Pre-trained embedding model for resume-job matching
+   - Returns similarity scores for ranking candidates
+
+## 5. Implementation Thought Process and Decision Making
+
+### 5.1 System Architecture Decisions
+
+When designing Hirelah AI, several important architectural decisions were made:
+
+1. **Next.js Frontend + Python Backend Split**
+   - **Thought Process**: We needed to balance modern UI capabilities with ML performance
+   - **Decision**: Next.js for the main application with a Python FastAPI service for semantic search
+   - **Reasoning**: This approach leverages TypeScript/React's UI strengths while using Python's ML ecosystem
+
+2. **Google Gemini Integration**
+   - **Thought Process**: Needed advanced NLP capabilities to extract structured data from resumes
+   - **Decision**: Integrate Google Gemini 2.0 Flash model with structured output
+   - **Reasoning**: Gemini provides state-of-the-art document understanding with JSON output support
+
+3. **Data Storage Approach**
+   - **Thought Process**: For the prototype, needed simple yet effective data storage
+   - **Decision**: File-based storage with JSON for candidate data and PDFs in the filesystem
+   - **Reasoning**: Fast to implement and sufficient for demonstrating the concept
+
+### 5.2 Implementation Challenges and Solutions
+
+During implementation, several challenges were addressed:
+
+1. **Resume Data Extraction**
+   - **Challenge**: Extracting consistent structured data from diverse resume formats
+   - **Solution**: Created a detailed schema for Gemini API with specific field definitions
+   - **Result**: Consistent JSON output with personality analysis and skills categorization
+
+2. **Semantic Search Accuracy**
+   - **Challenge**: Making search results truly semantic rather than keyword-based
+   - **Solution**: Implemented SentenceTransformer with a fine-tuned resume matching model
+   - **Result**: Search results based on meaning rather than exact keyword matches
+
+3. **Interview Experience**
+   - **Challenge**: Creating a realistic, responsive virtual interview experience
+   - **Solution**: Implemented MediaDevices API for camera/audio with real-time controls
+   - **Result**: Interactive interview simulation with media toggles and conversation flow
+
+## 6. User Flows and Interface
+
+The interface is organized around three main user flows:
+
+### 6.1 Candidate Journey
+1. Access the landing page and select "I'm a Candidate"
+2. Upload resume through the file input on `/candidate/apply`
+3. Resume is processed by Gemini AI and structured data is extracted
+4. Candidate receives interview invitation via email with unique token link
+5. Complete AI-powered interview session with video and audio capture
+
+### 6.2 Recruiter Journey
+1. Access the landing page and select "I'm a Recruiter"
+2. Browse talent pool on `/recruiter/talent-pool`
+3. Use semantic search to filter candidates based on skills or experience
+4. Preview candidate details, resume, and AI analysis
+5. Ask questions about candidates via the AI chat interface
+6. Generate and send interview invitations to promising candidates
+
+### 6.3 Interview Process
+1. Candidate accesses `/interview/{token}` URL
+2. Media permissions are requested for camera and microphone
+3. AI interviewer asks predefined questions based on the job role
+4. Responses are captured and analyzed in real-time
+5. Interview results are stored and made available to recruiters
+
+## 7. Setup and Development Guide
+
+### 7.1 Prerequisites
+- Node.js 18.x or later
+- Python 3.8+ (for semantic search backend)
+- Google Gemini API key
+
+### 7.2 Frontend Setup
+1. Navigate to the frontend directory
+   ```bash
+   cd frontend
+   ```
+
+2. Install dependencies
+   ```bash
+   npm install
+   ```
+
+3. Create `.env.local` file with required environment variables:
+   ```
+   GEMINI_API_KEY=your_gemini_api_key
+   ```
+
+4. Start the development server
+   ```bash
+   npm run dev
+   ```
+
+### 7.3 Backend Setup
+1. Navigate to the backend directory
+   ```bash
+   cd backend
+   ```
+
+2. Install Python dependencies
+   ```bash
+   pip install -r requirements.txt  # Or run the first cell in BACKENDSEMANTICSEARCH.ipynb
+   ```
+
+3. Run the semantic search service
+   ```bash
+   python -m uvicorn main:app --host 127.0.0.1 --port 8000
+   ```
+   Alternatively, run the Jupyter notebook cells in `BACKENDSEMANTICSEARCH.ipynb`
+
+### 7.4 Technical Resources
+
+- [Google Gemini API Documentation](https://ai.google.dev/gemini/docs)
+- [Next.js Documentation](https://nextjs.org/docs)
+- [SentenceTransformer Documentation](https://www.sbert.net/)
+- [FastAPI Documentation](https://fastapi.tiangolo.com/)
 
 ---
 
-*Reminder: This proposal is concise for README purposes. For full appendices, include UI wireframes and additional research as needed.*
+*This README provides a concise technical overview of the Hirelah AI system architecture and implementation details.*
