@@ -4,11 +4,6 @@
 
 ### Case Study Category: 1 - AI-Powered Talent Acquisition System
 
-### Team Members:
-- Member 1 name
-- Member 2 name
-- Member 3 name
-- Member 4 name
 
 ## 1. Introduction
 
